@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 @RestController
@@ -27,6 +26,7 @@ public class ProductController {
 
     @Autowired()
     private ProductService productService;
+    @Autowired()
     private CategoryService categoryService;
 
     public ProductController() {
@@ -37,18 +37,19 @@ public class ProductController {
     public ResponseEntity<Product> post(@RequestBody Product product) {
         try {
             List<Category> categoryList = categoryService.getAll();
-            for (int indice=0; indice <= 100_000; indice++) {
+            System.out.println("Categorias: d"+categoryList.size());
+            for (int indice=0; indice < 100_0; indice++) {
                 Product product1 = new Product();
 
                 product1.setProductName(String.valueOf(faker.name().name()));
                 product1.setSupplierId(faker.number().randomNumber());
-                product1.setCategory(categoryList.get(random.nextInt(categoryList.size())));
                 product1.setQuantityPerUnit((int) faker.number().randomNumber());
                 product1.setUnitPrice((int) faker.number().randomNumber());
                 product1.setUnitsInStock((int) faker.number().randomNumber());
                 product1.setUnitsOnOrder((int) faker.number().randomNumber());
                 product1.setReorderLevel((int) faker.number().randomNumber());
                 product1.setDiscontinued(faker.bool().bool());
+                product1.setCategory(categoryList.get(random.nextInt(categoryList.size())));
 
                 productService.save(product1);
             }
