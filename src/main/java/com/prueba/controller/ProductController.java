@@ -64,19 +64,19 @@ public class ProductController {
         try {
             List<Category> categoryList = categoryService.getAll();
             for (int indice=0; indice < quantity; indice++) {
-                Product product1 = new Product();
+                Product product2 = new Product();
 
-                product1.setProductName(String.valueOf(faker.name().name()));
-                product1.setSupplierId(faker.number().randomNumber());
-                product1.setQuantityPerUnit((int) faker.number().randomNumber());
-                product1.setUnitPrice((int) faker.number().randomNumber());
-                product1.setUnitsInStock((int) faker.number().randomNumber());
-                product1.setUnitsOnOrder((int) faker.number().randomNumber());
-                product1.setReorderLevel((int) faker.number().randomNumber());
-                product1.setDiscontinued(faker.bool().bool());
-                product1.setCategory(categoryList.get(random.nextInt(categoryList.size())));
+                product2.setProductName(String.valueOf(faker.name().name()));
+                product2.setSupplierId(faker.number().randomNumber());
+                product2.setQuantityPerUnit((int) faker.number().randomNumber());
+                product2.setUnitPrice((int) faker.number().randomNumber());
+                product2.setUnitsInStock((int) faker.number().randomNumber());
+                product2.setUnitsOnOrder((int) faker.number().randomNumber());
+                product2.setReorderLevel((int) faker.number().randomNumber());
+                product2.setDiscontinued(faker.bool().bool());
+                product2.setCategory(categoryList.get(random.nextInt(categoryList.size())));
 
-                productService.save(product1);
+                productService.save(product2);
             }
             return new ResponseEntity<>(HttpStatus.CREATED);
         }

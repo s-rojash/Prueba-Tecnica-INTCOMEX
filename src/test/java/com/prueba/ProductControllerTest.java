@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(value = ProductController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ProductControllerTest {
+class ProductControllerTest {
 
     String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1OTM4NzYsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTkzODc2LCJleHAiOjE4NDIyNzM4NzZ9.4yWZTtGjmIpNVXi7ZMYJE3gb_fYnj9JZKWll-ac4l8M";
 
@@ -107,7 +107,7 @@ public class ProductControllerTest {
 
     @Test
     @DisplayName(value = "Test Controller - Post product quantity")
-    @Order(3)
+    @Order(4)
     void postProductQuantity() throws Exception {
         Category category = new Category(1L,"SERVIDORES","DESCIPCIÓN","PINTURE");
 
@@ -128,7 +128,7 @@ public class ProductControllerTest {
 
     @Test
     @DisplayName(value = "Test Controller - Get product id")
-    @Order(4)
+    @Order(5)
     void getProductID() throws Exception {
         Category category = new Category(1L,"SERVIDORES","DESCIPCIÓN","PINTURE");
         Product product = new Product(1L, "PRODUCTO",1L, category, 1,1,1,1,1,true);
