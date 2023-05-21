@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'api-prueba-tecnica-INTCOMEX'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B5A455E9BC524796803F6EC3209C1ED5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DEC9F9ED676443C7A0048E4793234990 }}
           package: '*.jar'
