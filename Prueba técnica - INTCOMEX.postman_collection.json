@@ -1,0 +1,1320 @@
+{
+	"info": {
+		"_postman_id": "2e4f4ff4-da46-4de7-a2cf-2ce48efdab21",
+		"name": "Prueba técnica - INTCOMEX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17084692"
+	},
+	"item": [
+		{
+			"name": "User create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"s.rojash@sena.edu.co\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/User/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"User",
+						""
+					]
+				},
+				"description": "| Código | Descripción |\n| --- | --- |\n| 201 | En el caso que el usuario se haya creado con éxito. |"
+			},
+			"response": [
+				{
+					"name": "201 - Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"s.rojash@sena.edu.co\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://prueba-tecnica-intcomex.azurewebsites.net//User/",
+							"protocol": "https",
+							"host": [
+								"prueba-tecnica-intcomex",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"",
+								"User",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 May 2023 22:02:02 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"userId\": 1,\n    \"email\": \"s.rojash@sena.edu.co\",\n    \"password\": \"$2a$10$BAqm0tJ7tBxchIiXeIxDR.tTMIHTgeW7doYnUOvHGUygQAjBUrQSC\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"s.rojash@sena.edu.co\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/Login/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"Login",
+						""
+					]
+				},
+				"description": "| Código | Descripción |\n| --- | --- |\n| 200 | En el caso que el usuario sea validado y en el header se agrega el token. |"
+			},
+			"response": [
+				{
+					"name": "200 - OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"s.rojash@sena.edu.co\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://prueba-tecnica-intcomex.azurewebsites.net//Login/",
+							"protocol": "https",
+							"host": [
+								"prueba-tecnica-intcomex",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"",
+								"Login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1NTQ1MTEsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTU0NTExLCJleHAiOjE2ODYzNTQ1MTF9.tIbJCbipgD-Glc-2kx9vE7UX1R96WDnGVSGynR8BV2E"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 May 2023 03:48:31 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Category create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1NTQ1MTEsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTU0NTExLCJleHAiOjE2ODYzNTQ1MTF9.tIbJCbipgD-Glc-2kx9vE7UX1R96WDnGVSGynR8BV2E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryName\": \"SERVIDORES\",\r\n    \"description\": \"Hola\",\r\n    \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/Category/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"Category",
+						""
+					]
+				},
+				"description": "| Código | Descripción |\n| --- | --- |\n| 201 | En el caso que la categoria se haya creado con éxito. |\n| 403 | En caso de que el token no sea valido. |"
+			},
+			"response": [
+				{
+					"name": "201 - Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\": \"SERVIDORES\",\r\n    \"description\": \"Hola\",\r\n    \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://prueba-tecnica-intcomex.azurewebsites.net//Category/",
+							"protocol": "https",
+							"host": [
+								"prueba-tecnica-intcomex",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"",
+								"Category",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 May 2023 21:40:35 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"categoryId\": 2,\n    \"categoryName\": \"SERVIDORES\",\n    \"description\": \"Hola\",\n    \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n}"
+				},
+				{
+					"name": "403 - Forbidden",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\": \"SERVIDORES\",\r\n    \"description\": \"Hola\",\r\n    \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/Category/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"Category",
+								""
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 May 2023 04:00:47 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Categories list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1OTM4NzYsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTkzODc2LCJleHAiOjE4NDIyNzM4NzZ9.4yWZTtGjmIpNVXi7ZMYJE3gb_fYnj9JZKWll-ac4l8M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/Categories/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"Categories",
+						""
+					]
+				},
+				"description": "| Código | Descripción |\n| --- | --- |\n| 200 | Retorna lista de categortias. |\n| 403 | En caso de que el token no sea valido. |"
+			},
+			"response": [
+				{
+					"name": "200 - Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/Categories/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"Categories",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 May 2023 04:02:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"categoryId\": 1,\n        \"categoryName\": \"SERVIDORES\",\n        \"description\": \"Hola\",\n        \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n    },\n    {\n        \"categoryId\": 2,\n        \"categoryName\": \"CLOUD\",\n        \"description\": \"Descripción\",\n        \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n    }\n]"
+				},
+				{
+					"name": "403 - Forbidden",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/Categories/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"Categories",
+								""
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 May 2023 04:02:50 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Category ping",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1OTM4NzYsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTkzODc2LCJleHAiOjE4NDIyNzM4NzZ9.4yWZTtGjmIpNVXi7ZMYJE3gb_fYnj9JZKWll-ac4l8M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/Category/ping",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"Category",
+						"ping"
+					]
+				},
+				"description": "| Código | Descripción |\n| --- | --- |\n| 200 | Validar el estado del endpoint de categoria. |"
+			},
+			"response": [
+				{
+					"name": "200 - Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/Category/ping",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"Category",
+								"ping"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "4"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 May 2023 21:39:07 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						}
+					],
+					"cookie": [],
+					"body": "pong"
+				}
+			]
+		},
+		{
+			"name": "Product create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1NTQ1MTEsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTU0NTExLCJleHAiOjE2ODYzNTQ1MTF9.tIbJCbipgD-Glc-2kx9vE7UX1R96WDnGVSGynR8BV2E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/Product/",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"Product",
+						""
+					]
+				},
+				"description": "| Código | Descripción |\n| --- | --- |\n| 201 | En el caso que los productos se haya creado con éxito. |\n| 403 | En caso de que el token no sea valido. |"
+			},
+			"response": [
+				{
+					"name": "201 - Created",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/Product/2",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"Product",
+								"2"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 May 2023 21:41:23 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "403 - Forbidden",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/Product/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"Product",
+								""
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 May 2023 04:06:40 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Products list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1NTQ1MTEsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTU0NTExLCJleHAiOjE2ODYzNTQ1MTF9.tIbJCbipgD-Glc-2kx9vE7UX1R96WDnGVSGynR8BV2E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/Products/?page=0&size=10&sort=productId,desc",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"Products",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "sort",
+							"value": "productId,desc"
+						}
+					]
+				},
+				"description": "| Código | Descripción |\n| --- | --- |\n| 200 | Retorna lista de productos. |\n| 403 | En caso de que el token no sea valido. |"
+			},
+			"response": [
+				{
+					"name": "200 - Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://prueba-tecnica-intcomex.azurewebsites.net/Products/?page=0&size=10&sort=productId,desc",
+							"protocol": "https",
+							"host": [
+								"prueba-tecnica-intcomex",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"",
+								"Products",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "productId,desc"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 May 2023 04:07:39 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"content\": [\n        {\n            \"productId\": 1000,\n            \"productName\": \"Lincoln Marquardt Jr.\",\n            \"supplierId\": 921953213,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 33734,\n            \"unitPrice\": 81548,\n            \"unitsInStock\": 2224082,\n            \"unitsOnOrder\": 216,\n            \"reorderLevel\": 205920587,\n            \"discontinued\": true\n        },\n        {\n            \"productId\": 999,\n            \"productName\": \"Dr. Corrie Schuppe\",\n            \"supplierId\": 409856396,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 98,\n            \"unitPrice\": 559,\n            \"unitsInStock\": 784756710,\n            \"unitsOnOrder\": 87,\n            \"reorderLevel\": 110612,\n            \"discontinued\": false\n        },\n        {\n            \"productId\": 998,\n            \"productName\": \"Johnathon Rempel\",\n            \"supplierId\": 86,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 429752,\n            \"unitPrice\": 979433,\n            \"unitsInStock\": 522,\n            \"unitsOnOrder\": 213750245,\n            \"reorderLevel\": 889503,\n            \"discontinued\": true\n        },\n        {\n            \"productId\": 997,\n            \"productName\": \"Winford Considine\",\n            \"supplierId\": 0,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 3549,\n            \"unitPrice\": 5,\n            \"unitsInStock\": 75698,\n            \"unitsOnOrder\": 41999986,\n            \"reorderLevel\": 59010,\n            \"discontinued\": true\n        },\n        {\n            \"productId\": 996,\n            \"productName\": \"Bud Mertz\",\n            \"supplierId\": 915,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 62457926,\n            \"unitPrice\": 42,\n            \"unitsInStock\": 608176203,\n            \"unitsOnOrder\": 3,\n            \"reorderLevel\": 6,\n            \"discontinued\": true\n        },\n        {\n            \"productId\": 995,\n            \"productName\": \"Madlyn Ratke\",\n            \"supplierId\": 453,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 42561,\n            \"unitPrice\": 333283684,\n            \"unitsInStock\": 703277817,\n            \"unitsOnOrder\": 165458956,\n            \"reorderLevel\": 528557,\n            \"discontinued\": true\n        },\n        {\n            \"productId\": 994,\n            \"productName\": \"Daryl Sporer IV\",\n            \"supplierId\": 55148,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 4049,\n            \"unitPrice\": 15751,\n            \"unitsInStock\": 363889,\n            \"unitsOnOrder\": 70405,\n            \"reorderLevel\": 6936028,\n            \"discontinued\": false\n        },\n        {\n            \"productId\": 993,\n            \"productName\": \"Dave Gibson\",\n            \"supplierId\": 14755,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 209,\n            \"unitPrice\": 78,\n            \"unitsInStock\": 5995,\n            \"unitsOnOrder\": 88,\n            \"reorderLevel\": 0,\n            \"discontinued\": false\n        },\n        {\n            \"productId\": 992,\n            \"productName\": \"Miss Kelvin Breitenberg\",\n            \"supplierId\": 8535717,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 895,\n            \"unitPrice\": 7000385,\n            \"unitsInStock\": 366,\n            \"unitsOnOrder\": 9536,\n            \"reorderLevel\": 55,\n            \"discontinued\": false\n        },\n        {\n            \"productId\": 991,\n            \"productName\": \"Dirk Green\",\n            \"supplierId\": 7,\n            \"category\": {\n                \"categoryId\": 1,\n                \"categoryName\": \"SERVIDORES\",\n                \"description\": \"Hola\",\n                \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n            },\n            \"quantityPerUnit\": 83,\n            \"unitPrice\": 42319607,\n            \"unitsInStock\": 82245436,\n            \"unitsOnOrder\": 26,\n            \"reorderLevel\": 7,\n            \"discontinued\": true\n        }\n    ],\n    \"pageable\": {\n        \"sort\": {\n            \"empty\": false,\n            \"sorted\": true,\n            \"unsorted\": false\n        },\n        \"offset\": 0,\n        \"pageNumber\": 0,\n        \"pageSize\": 10,\n        \"paged\": true,\n        \"unpaged\": false\n    },\n    \"last\": false,\n    \"totalPages\": 100,\n    \"totalElements\": 1000,\n    \"size\": 10,\n    \"number\": 0,\n    \"sort\": {\n        \"empty\": false,\n        \"sorted\": true,\n        \"unsorted\": false\n    },\n    \"numberOfElements\": 10,\n    \"first\": true,\n    \"empty\": false\n}"
+				},
+				{
+					"name": "403 - Forbidden",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/Products/?page=0&size=10&sort=productId,desc",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"Products",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "sort",
+									"value": "productId,desc"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 20 May 2023 04:09:17 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Products id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1OTM4NzYsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTkzODc2LCJleHAiOjE4NDIyNzM4NzZ9.4yWZTtGjmIpNVXi7ZMYJE3gb_fYnj9JZKWll-ac4l8M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/Products/1",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"Products",
+						"1"
+					]
+				},
+				"description": "| Código | Descripción |\n| --- | --- |\n| 200 | Retorna datos del producto. |\n| 403 | En caso de que el token no sea valido. |"
+			},
+			"response": [
+				{
+					"name": "200 - Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://prueba-tecnica-intcomex.azurewebsites.net//Products/1",
+							"protocol": "https",
+							"host": [
+								"prueba-tecnica-intcomex",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"",
+								"Products",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 May 2023 04:24:06 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"productId\": 1,\n    \"productName\": \"Dessie Sipes\",\n    \"supplierId\": 846567,\n    \"category\": {\n        \"categoryId\": 1,\n        \"categoryName\": \"SERVIDORES\",\n        \"description\": \"Hola\",\n        \"picture\": \"https://dribbble.com/shots/5714659-First-aid-disk/attachments/11015514?mode=media\"\n    },\n    \"quantityPerUnit\": 627,\n    \"unitPrice\": 611434685,\n    \"unitsInStock\": 9,\n    \"unitsOnOrder\": 38,\n    \"reorderLevel\": 61,\n    \"discontinued\": false\n}"
+				},
+				{
+					"name": "400 - Bad Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/Products/100000000000",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"Products",
+								"100000000000"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 May 2023 04:25:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Product ping",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1OTM4NzYsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTkzODc2LCJleHAiOjE4NDIyNzM4NzZ9.4yWZTtGjmIpNVXi7ZMYJE3gb_fYnj9JZKWll-ac4l8M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{server}}/Product/ping",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"Product",
+						"ping"
+					]
+				},
+				"description": "| Código | Descripción |\n| --- | --- |\n| 200 | Validar el estado del endpoint de producto. |"
+			},
+			"response": [
+				{
+					"name": "200 - Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://prueba-tecnica-intcomex.azurewebsites.net//Product/ping",
+							"protocol": "https",
+							"host": [
+								"prueba-tecnica-intcomex",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"",
+								"Product",
+								"ping"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "4"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 21 May 2023 21:38:36 GMT"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						}
+					],
+					"cookie": [],
+					"body": "pong"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "https://prueba-tecnica-intcomex.azurewebsites.net/",
+			"type": "string"
+		}
+	]
+}
