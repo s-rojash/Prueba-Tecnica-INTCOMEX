@@ -6,6 +6,7 @@ import com.prueba.model.Category;
 import com.prueba.service.CategoryService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
@@ -20,9 +21,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-@WebMvcTest(CategoryController.class)
+@WebMvcTest(value = CategoryController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CategoryControllerTest {
+
+    String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1OTM4NzYsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTkzODc2LCJleHAiOjE4NDIyNzM4NzZ9.4yWZTtGjmIpNVXi7ZMYJE3gb_fYnj9JZKWll-ac4l8M";
 
     @Autowired
     private MockMvc mockMvc;
@@ -41,7 +44,9 @@ class CategoryControllerTest {
     @DisplayName(value = "Test Controller - Ping category")
     @Order(1)
     void testPing() throws Exception {
-        mockMvc.perform(get("/Category/ping").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/Category/ping")
+                        .header("Authorization", "Bearer "+ token)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
@@ -55,7 +60,8 @@ class CategoryControllerTest {
 
         when(categoryService.getAll()).thenReturn(categoryList);
 
-        mockMvc.perform(get("/Categories/"))
+        mockMvc.perform(get("/Categories/")
+                        .header("Authorization", "Bearer "+ token))
                 .andExpect(status().isOk());
 
         verify(categoryService, times(1)).getAll();
@@ -73,7 +79,9 @@ class CategoryControllerTest {
             return c;
         });
 
-        mockMvc.perform(post("/Category/").contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(post("/Category/")
+                        .header("Authorization", "Bearer "+ token)
+                        .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(category)))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.categoryId").value(1L))

@@ -11,8 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -34,11 +34,10 @@ public class ProductController {
     }
 
     @PostMapping("Product/")
-    public ResponseEntity<Product> post(@RequestBody Product product) {
+    public ResponseEntity<Product> post() {
         try {
             List<Category> categoryList = categoryService.getAll();
-            System.out.println("Categorias: d"+categoryList.size());
-            for (int indice=0; indice < 100_0; indice++) {
+            for (int indice=0; indice < 100_000; indice++) {
                 Product product1 = new Product();
 
                 product1.setProductName(String.valueOf(faker.name().name()));
@@ -53,7 +52,33 @@ public class ProductController {
 
                 productService.save(product1);
             }
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body(product);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
+        catch (Exception exception) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("Product/{quantity}")
+    public ResponseEntity<Product> postCant(@PathVariable Long quantity) {
+        try {
+            List<Category> categoryList = categoryService.getAll();
+            for (int indice=0; indice < quantity; indice++) {
+                Product product1 = new Product();
+
+                product1.setProductName(String.valueOf(faker.name().name()));
+                product1.setSupplierId(faker.number().randomNumber());
+                product1.setQuantityPerUnit((int) faker.number().randomNumber());
+                product1.setUnitPrice((int) faker.number().randomNumber());
+                product1.setUnitsInStock((int) faker.number().randomNumber());
+                product1.setUnitsOnOrder((int) faker.number().randomNumber());
+                product1.setReorderLevel((int) faker.number().randomNumber());
+                product1.setDiscontinued(faker.bool().bool());
+                product1.setCategory(categoryList.get(random.nextInt(categoryList.size())));
+
+                productService.save(product1);
+            }
+            return new ResponseEntity<>(HttpStatus.CREATED);
         }
         catch (Exception exception) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -63,6 +88,17 @@ public class ProductController {
     @GetMapping("Products/")
     public ResponseEntity<Page<Product>> getAll(Pageable pageable) {
         return ResponseEntity.ok(productService.getAll(pageable));
+    }
+
+    @GetMapping("Products/{id}")
+    public ResponseEntity<Product> getId(@PathVariable Long id) {
+        try{
+            Product product = productService.findProductId(id);
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        }
+        catch (Exception exception) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("Product/ping")

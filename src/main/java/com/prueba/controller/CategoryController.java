@@ -21,7 +21,7 @@ public class CategoryController {
     @PostMapping("Category/")
     public ResponseEntity<Category> post(@RequestBody Category category) {
         categoryService.save(category);
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(category);
+        return ResponseEntity.status(HttpStatus.CREATED).body(category);
     }
 
     @GetMapping("Categories/")

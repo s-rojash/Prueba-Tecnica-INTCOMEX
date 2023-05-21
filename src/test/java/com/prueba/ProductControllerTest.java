@@ -1,15 +1,14 @@
 package com.prueba;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.prueba.controller.CategoryController;
 import com.prueba.controller.ProductController;
 import com.prueba.model.Category;
 import com.prueba.model.Product;
 import com.prueba.service.CategoryService;
 import com.prueba.service.ProductService;
 import org.junit.jupiter.api.*;
-import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
@@ -20,18 +19,18 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-@WebMvcTest(ProductController.class)
+@WebMvcTest(value = ProductController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProductControllerTest {
+
+    String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ1OTM4NzYsInN1YiI6InMucm9qYXNoQHNlbmEuZWR1LmNvIiwibmJmIjoxNjg0NTkzODc2LCJleHAiOjE4NDIyNzM4NzZ9.4yWZTtGjmIpNVXi7ZMYJE3gb_fYnj9JZKWll-ac4l8M";
 
     @Autowired
     private MockMvc mockMvc;
@@ -53,7 +52,9 @@ public class ProductControllerTest {
     @DisplayName(value = "Test Controller - Ping product")
     @Order(1)
     void testPing() throws Exception {
-        mockMvc.perform(get("/Product/ping").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/Product/ping")
+                        .header("Authorization", "Bearer "+ token)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
@@ -71,7 +72,8 @@ public class ProductControllerTest {
 
         when(productService.getAll(pageable)).thenReturn(products);
 
-        mockMvc.perform(get("/Products/"))
+        mockMvc.perform(get("/Products/")
+                .header("Authorization", "Bearer "+ token))
                 .andExpect(status().isOk());
 
     }
@@ -82,7 +84,32 @@ public class ProductControllerTest {
     void postProduct() throws Exception {
         Category category = new Category(1L,"SERVIDORES","DESCIPCIÓN","PINTURE");
 
-        List<Category> categoryList = Arrays.asList(category);
+        Product product = new Product(1L, "PRODUCTO",1L, category, 1,1,1,1,1,true);
+
+
+        when(categoryService.save(any())).then(invocation -> {
+            Category c = invocation.getArgument(0);
+            c.setCategoryId(1L);
+            return c;
+        });
+
+        when(productService.save(any())).then(invocation -> {
+            Product p = invocation.getArgument(0);
+            p.setProductId(1L);
+            return p;
+        });
+
+        mockMvc.perform(post("/Product/")
+                .header("Authorization", "Bearer "+ token)
+                .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(product)));
+    }
+
+    @Test
+    @DisplayName(value = "Test Controller - Post product quantity")
+    @Order(3)
+    void postProductQuantity() throws Exception {
+        Category category = new Category(1L,"SERVIDORES","DESCIPCIÓN","PINTURE");
 
         Product product = new Product(1L, "PRODUCTO",1L, category, 1,1,1,1,1,true);
 
@@ -93,8 +120,29 @@ public class ProductControllerTest {
             return c;
         });
 
-        mockMvc.perform(post("/Product/").contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(product)));
+        mockMvc.perform(post("/Product/10")
+                .header("Authorization", "Bearer "+ token)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(product)));
+    }
+
+    @Test
+    @DisplayName(value = "Test Controller - Get product id")
+    @Order(4)
+    void getProductID() throws Exception {
+        Category category = new Category(1L,"SERVIDORES","DESCIPCIÓN","PINTURE");
+        Product product = new Product(1L, "PRODUCTO",1L, category, 1,1,1,1,1,true);
+
+        List<Product> productList = new ArrayList<>();
+        productList.add(product);
+        Page<Product> products = new PageImpl<>(productList);
+        Pageable pageable = PageRequest.of(0,1);
+
+        when(productService.getAll(pageable)).thenReturn(products);
+
+        mockMvc.perform(get("/Products/1")
+                        .header("Authorization", "Bearer "+ token))
+                .andExpect(status().isOk());
 
     }
 }
