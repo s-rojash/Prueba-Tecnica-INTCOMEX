@@ -2,7 +2,7 @@
 
  ## a.	Flujo de trabajo
 
-Para este apartado se decido trabajar con el flujo GitFlow para mantener un flujo de trabajo organizado y estructurado en tu proyecto, obteniendo el siguiente resultado.
+Para este apartado se decido trabajar con el flujo GitFlow para mantener un flujo de trabajo organizado y estructurado en el proyecto, obteniendo el siguiente resultado.
 
 ![image](https://github.com/s-rojash/202210_BaseProject/assets/98681387/b0589801-f213-4fe0-93e2-a1f21ef35028)
 
@@ -12,9 +12,9 @@ Para este apartado se decido trabajar con el flujo GitFlow para mantener un fluj
 
 Dentro de las carpetas src/main/java/com/prueba se encuentra la distribución de los componentes de la API, dividiendo el mismo en capas como buena práctica, teniendo los siguientes paquetes:
 
-i.	controller: paquete de los controladores que cuenta con los endpoint.
+i.	controller: Paquete de los controladores que cuenta con los endpoint.
 
-ii.	service: Paquete de los servicios donde se encuentra la funcionalidades y lógica.
+ii.	service: Paquete de los servicios donde se encuentra las funcionalidades y lógica.
 
 iii.	model: Paquete de los modelos de representación de los datos.
 
@@ -24,13 +24,13 @@ v.	security: Paquete de seguridad que contiene la configuración de Authenticati
 
 ![image](https://github.com/s-rojash/Prueba-Tecnica-INTCOMEX/assets/98681387/9eda9895-4afe-4070-bc79-1fcc48afb145)
 
-Para los recursos de pruebas unitarias se podrá encontrar desde la siguiente ruta src/test/java/com/ prueba allí se listarán las pruebas por cada controller existente en nuestro caso 2 archivos.
+Para los recursos de pruebas unitarias se podrá encontrar desde la siguiente ruta src/test/java/com/prueba allí se listarán las pruebas por cada controller existente, en nuestro caso 3 archivos.
 
 ![image](https://github.com/s-rojash/Prueba-Tecnica-INTCOMEX/assets/98681387/330f3fc8-a91b-4af5-af97-d6a2b5e48599)
 
 ## c.	Actions GitHub - CI
 
-En este apartado se resalta la implementación de un Action, con el fin de definir un flujo de trabajo dentro del repositorio, la implementación valida la ejecución de las pruebas unitarias y su coverage teniendo como mínimo el 80% de está de lo contraria la ejecución fallará, esto es aplicado a la integración del codigo a la rama main.
+En este apartado se resalta la implementación de un Action, con el fin de definir un flujo de trabajo dentro del repositorio, la implementación valida la ejecución de las pruebas unitarias y su coverage teniendo como mínimo el 80% de está, de lo contraria la ejecución fallará, esto es aplicado a la integración del codigo a la rama main.
 
 ![image](https://github.com/s-rojash/Prueba-Tecnica-INTCOMEX/assets/98681387/48808025-1f7b-46f8-8f75-5633da84bbc3)
 
@@ -46,32 +46,34 @@ https://github.com/s-rojash/Prueba-Tecnica-INTCOMEX
 
 ## b.	Endpoints
 
-Se hace la implementación de endpoint según requerimiento solicitado, adicional se implementa un endpoint similar para la creación de productos ya que en las restricciones del ejercicio se solicita 100.000 productos nuevos y teniendo presente el tiempo de respuesta prologados se implementa el mismo endpont similar, pero recibiendo un parámetro por url el cual nos indicara el número de productos a crear. 
-Ejemplo: se desea crear 10 productos la petición se realizaría de la siguiente manera {{server}}:{{port}}/Product/10, si desea realizar los 100.000 peticiones bastara con quietar el parámetro {{server}}:{{port}}/Product/.
+Se hace la implementación de endpoint según requerimiento solicitado, adicional se implementa un endpoint similar para la creación de productos, ya que en las restricciones del ejercicio se solicita 100.000 productos nuevos y teniendo presente el tiempo de respuesta prologados se implementa el mismo endpont similar, pero recibiendo un parámetro por url el cual nos indicara el número de productos a crear. 
+Ejemplo: se desea crear 10 productos, la petición se realizaría de la siguiente manera {{server}}:{{port}}/Product/10, si desea realizar las 100.000 peticiones bastara con quitar el parámetro {{server}}/Product/.
 
-Estas pruebas se pueden realizar con el collertor generado y que se mencionará mas adelante en el documento.
+Pare el tema de la paginación del entpoint de listar productos esta se maneja desde la url con la siguiente expresión ?page=0&size=10&sort=productId,desc.
 
-i.	Crear categoría - POST {{server}}:{{port}}/Category/
+Estas pruebas se pueden realizar con el collertor generado y que se mencionará más adelante en el documento.
 
-ii.	Listar categoría - GET {{server}}:{{port}}/Categories/id
+i.	Crear categoría - POST {{server}}/Category/
 
-iii.	Crear producto - POST {{server}}:{{port}}/Product/ o {{server}}:{{port}}/Product/quantity
+ii.	Listar categoría - GET {{server}}/Categories/id
 
-iv.	Listar producto - GET {{server}}:{{port}}/Products/
+iii.	Crear producto - POST {{server}}/Product/ o {{server}}/Product/quantity
 
-v.	Buscar producto por ID - GET {{server}}:{{port}}/Products/id
+iv.	Listar producto - GET {{server}}/Products/?page=0&size=10&sort=productId,desc
+
+v.	Buscar producto por ID - GET {{server}}/Products/id
 
 ## c.	Base de datos
 
-Para este caso se utiliza como base de datos H2 que es una base de datos en memoria esto para facilitar el despliegue en la nube.
+Para este caso se utiliza como base de datos H2 que es una base de datos en memoria, esto para facilitar el despliegue en la nube.
 
 ## d.	Seguridad
 
-Para este apartado se tomó la decisión de implementar Authentication y Authoritation, por lo anterior se crear un paquete con dicha configuración y adicional se implantan dos endpoints adicionales los cuales son necesarios para ejecución,
+Para este apartado se tomó la decisión de implementar Authentication y Authoritation, por lo anterior se crea un paquete con dicha configuración y adicional se implantan dos endpoints adicionales, los cuales son necesarios para ejecución.
 
-i.	Crear usuario - POST {{server}}:{{port}}/User/
+i.	Crear usuario - POST {{server}}/User/
 
-ii.	Login - POST {{server}}:{{port}}/Login/
+ii.	Login - POST {{server}}/Login/
 
 Los endponts de crear usuario y login son los únicos que se encuentran expuestos teniendo como punto de entrada de la API, para consumir los demás servicios mencionados en el punto b Endpoints se requiere que el cuerpo de la petición se agregue el token (JWT) generado teniendo como cuerpo Authorization Bearer Token.
 
@@ -85,7 +87,7 @@ Adicional, se comparte collection de Postman para facilitar las pruebas de los e
 
 ## f.	Pruebas unitarias
 
-Para las pruebas unitarias se implementaron para los endpoints con Junit, para la ejecución de pruebas se puede realizar ubicándose en la raíz del proyecto y ejecutando el siguiente comando. mvn test.
+Para las pruebas unitarias se implementaron para los endpoints con Junit, la ejecución de pruebas se puede realizar ubicándose en la raíz del proyecto y ejecutando el siguiente comando. mvn test.
 
 ![image](https://github.com/s-rojash/Prueba-Tecnica-INTCOMEX/assets/98681387/dd3ba2a9-23c0-4e06-96eb-7fdb5fec53e8)
 
@@ -101,11 +103,11 @@ En este aparatado se menciona la herramienta utilizada para el análisis de cove
 
 ## h.	Evaluación de codigo
 
-En este apartado se resalta el uso de la herramienta SonarQube para validar la calidad del codigo, encuentro el coverage este incluye a la configuración de seguridad por lo que el porcentaje es menor.
+En este apartado se resalta el uso de la herramienta SonarQube para validar la calidad del código, en el tema del coverage este incluye a la configuración de seguridad por lo que el porcentaje es menor.
 
-Además, se encuentra tres vulnerabilidades en cuenta a la seguridad y esto se debe a que en la configuración se guarda el secret del token y por buenas practicas este debe ir como variable de entorno.
+Además, se encuentra tres vulnerabilidades en cuento a la seguridad y esto se debe que en la configuración se guarda el secret del token y por buenas practicas este debe ir como variable de entorno.
 
-Otro se debe a que se inactiva el CSRF, esto por cuestiones de configuración se inactiva para facilitar esta implementación.
+Otro se debe a que se inactiva el CSRF, esto por cuestiones de configuración para facilitar esta implementación.
 
 ![image](https://github.com/s-rojash/Prueba-Tecnica-INTCOMEX/assets/98681387/321d72b5-0766-48a9-8cf3-01f7bbb399e9)
 
@@ -117,23 +119,23 @@ Otro se debe a que se inactiva el CSRF, esto por cuestiones de configuración se
 
 Para ejecutar el jar usted debe posicionarse en la siguiente ruta /Prueba-Tecnica-INTCOMEX/target y ejecutar el comando java -jar Prueba-Tecnica-INTCOMEX-0.0.1-SNAPSHOT, para esto el equipo debe contar con el JDK 19 o el OpenJDK.
 
-Si desea recrear el jar usted se debe pensionar en la raíz del proyecto y ejecutar el comando mvn install y este se alojará en la ruta mencionada anteriormente /Prueba-Tecnica-INTCOMEX/target
+Si desea compilar nuevamente el jar usted se debe posicionarse en la raíz del proyecto y ejecutar el comando mvn install y este se alojará en la ruta mencionada anteriormente /Prueba-Tecnica-INTCOMEX/target
 	
-Puerto configurado es el 3000 por lo que la ruta seria la siguiente http:/localhost:3000/.
+Puerto configurado es el 3000, por lo que la ruta sería la siguiente http:/localhost:3000/.
 
 ## b.	Ejecutar desde Docker
 
 Para desplegar el contenedor usted debe posicionarse en la raíz del proyecto y ejecutar el comando docker-compose up, para esto el equipo debe contar con Docker.
 
-Si desea recrear el jar usted se debe pensionar en la raíz del proyecto y ejecutar el comando mvn install y este se alojará en la ruta mencionada anteriormente /Prueba-Tecnica-INTCOMEX/target y luego ejecutar el paso anterior para crear el contenedor.
+Si desea recrear el jar usted se debe posicionarse en la raíz del proyecto y ejecutar el comando mvn install y este se alojará en la ruta mencionada anteriormente /Prueba-Tecnica-INTCOMEX/target y luego ejecutar el paso anterior para crear el contenedor.
 
-Puerto configurado es el 3000 por lo que la ruta seria la siguiente http:/localhost:3000/.
+Puerto configurado es el 3000, por lo que la ruta sería la siguiente http:/localhost:3000/.
 
 # 4.	Arquitectura
 
-La infraestructura utilizada es Azure ya que actualmente las cuentas de Google Cloud y aws los encuentro en uso por temas de la maestría, se utilizaron el siguiente elemento y configuración para su despliegue.
+La infraestructura utilizada es Azure, ya que actualmente las cuentas de Google Cloud y AWS los encuentro en uso por temas de la maestría, se utilizaron el siguiente elemento y configuración para su despliegue.
 
-Se utiliza App Service con plan de precios F1 Gratis con 1 CPU y 1G RAM infraestructura compartida, este se configura con java 17 y el despliegue se hace a través de GitHub. Este plan gratis tiene restricciones por lo que solo se utilizar 60 minutos por día.
+Se usa App Service con plan de precios F1 Gratis con 1 CPU y 1G RAM infraestructura compartida, este se configura con java 17 y el despliegue se hace a través de GitHub. Este plan gratis tiene restricciones, por lo que solo se puede usar 60 minutos por día.
  
 ![image](https://github.com/s-rojash/Prueba-Tecnica-INTCOMEX/assets/98681387/cc448c1b-0907-4df2-aa10-d961a942d99d)
 
