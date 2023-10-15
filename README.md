@@ -1,4 +1,4 @@
-# 1. Repositorio
+# 1. Repositorio.
 
  ## a.	Flujo de trabajo
 
