@@ -146,3 +146,5 @@ Se usa App Service con plan de precios F1 Gratis con 1 CPU y 1G RAM infraestruct
 ![image](https://github.com/s-rojash/Prueba-Tecnica-INTCOMEX/assets/98681387/81b7ee63-111f-48e8-9b65-2f57300d6b5c)
 
 ![image](https://github.com/s-rojash/Prueba-Tecnica-INTCOMEX/assets/98681387/e11843b7-7369-439d-972e-49c2a382a003)
+
+.
